@@ -267,7 +267,7 @@ class Pip2Pkgbuild():
         lines.append('makedepends=("python" "python-pip")')
 
         lines.append('build() {')
-        lines.append('  pip install --no-deps --target="%s" %s==%s'
+        lines.append('  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl --target="%s" %s==%s'
                      % (package_info['pack'], package_info['pack'], version))
         lines.append('}')
 
